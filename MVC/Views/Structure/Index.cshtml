@@ -1,0 +1,30 @@
+﻿@model MVC.ViewModels.StructureListViewModel
+
+@{
+    ViewBag.Title = "顯示";
+}
+<h2>@ViewBag.Title.</h2>
+
+<h4>顯示結構。</h4>
+@Html.ActionLink("新增", "Create", "Structure", new { @class = "btn btn-primary" })
+<hr />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="alert-info">
+            <th>結構名稱</th>
+            <th>動作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StructureList)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("刪除", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
